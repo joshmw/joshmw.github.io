@@ -1,0 +1,585 @@
+/* ============================================================
+   STYLE.CSS — Josh Wilson personal site
+   ============================================================
+   Table of contents:
+     1. Custom properties (colors, spacing, fonts)
+     2. Reset & base
+     3. Layout (sidebar + main grid)
+     4. Sidebar
+     5. Contact links
+     6. Section headings
+     7. About / bio
+     8. Publications
+     9. Conference publications (compact list)
+    10. Narrow screens
+    11. Formal / casual toggle
+   ============================================================
+   Sizing approach: widths scale with the viewport via clamp(), so
+   there is no single "desktop" width that everything snaps to.
+   Line length is capped separately (--measure) because a comfortable
+   reading measure is narrower than a comfortable page width.
+   ============================================================ */
+
+
+/* ============================================================
+   1. CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  /* Colors */
+  --bg:          #ffffff;
+  --text:        #1c1c1e;
+  --text-muted:  #636366;
+  --link:        #1d5fa6;
+  --link-hover:  #0f3d6e;
+  --border:      #d1d1d6;
+  --tag-hover-bg:#edf2fb;
+
+  /* Typography */
+  --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Longest comfortable line of prose. Caps paragraph width on wide
+     screens so the page can be wide without the text being hard to read. */
+  --measure: 76ch;
+
+  /* Layout — all three scale with the viewport */
+  --sidebar-width: clamp(148px, 15vw, 200px);
+  --col-gap:       clamp(2rem, 4.5vw, 4rem);
+  --page-padding:  clamp(1.5rem, 3.5vw, 2.75rem);
+  --page-gutter:   clamp(1.25rem, 3vw, 2rem);
+
+  /* Publication thumbnail */
+  --pub-thumb: clamp(100px, 11vw, 150px);
+
+  /* Total page width */
+  --max-width: 1180px;
+}
+
+
+/* ============================================================
+   2. RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  padding: var(--page-padding) var(--page-gutter);
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* No image can ever overflow its container */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--link);
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* Long words / URLs wrap instead of pushing the layout wider */
+p, li, h1, h2 {
+  overflow-wrap: break-word;
+}
+
+/* Focus ring — keyboard navigation */
+a:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+
+/* ============================================================
+   3. LAYOUT — sidebar left, main content right
+   ============================================================ */
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  column-gap: var(--col-gap);
+  align-items: start;
+}
+
+/* minmax(0, 1fr) above and min-width: 0 here are what stop a long
+   title or URL from forcing the column wider than its share. */
+.layout > * {
+  min-width: 0;
+}
+
+
+/* ============================================================
+   4. SIDEBAR
+   ============================================================ */
+.sidebar {
+  position: sticky;
+  top: var(--page-padding);   /* stays in view while scrolling */
+}
+
+/* Photo: square crop from the center of the image.
+   Adjust object-position if your face is off-center. */
+.photo-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 0.9rem;
+}
+
+.photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top; /* nudge down if face is cropped */
+  display: block;
+}
+
+/* Name — intentionally low-key, not the biggest thing on the page */
+.sidebar-info h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.affiliation {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.85rem;
+}
+
+
+/* ============================================================
+   5. CONTACT LINKS
+   ============================================================ */
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact a {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  /* break-word (not break-all) keeps the email readable when it wraps */
+  overflow-wrap: break-word;
+}
+
+.contact a:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+
+/* ============================================================
+   6. SECTION HEADINGS
+   ============================================================ */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 2.75rem);
+  padding-top: 0.15rem;       /* optical alignment with top of photo */
+  min-width: 0;
+}
+
+section h2 {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+
+
+/* ============================================================
+   7. ABOUT / BIO
+   ============================================================ */
+#about p {
+  font-size: 0.925rem;
+  line-height: 1.8;
+  max-width: var(--measure);
+}
+
+#about p + p {
+  margin-top: 0.9rem;
+}
+
+
+/* ============================================================
+   8. PUBLICATIONS
+   ============================================================ */
+.pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+/* Subheadings inside the Papers section ("In progress", "Published/preprinted").
+   Every subheading after the first gets extra space above it to
+   separate the groups. */
+.pub-subhead {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 clamp(0.9rem, 1.8vw, 1.15rem);
+  /* A thin gray line runs from the end of the words to the right edge */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pub-subhead::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.pub-subhead:not(:first-of-type) {
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+}
+
+/* Year group header (used when grouping by year — see README) */
+.pub-year {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.pub {
+  display: grid;
+  grid-template-columns: var(--pub-thumb) minmax(0, 1fr);
+  gap: clamp(0.85rem, 2vw, 1.35rem);
+  align-items: start;
+}
+
+/* Thumbnail — gray background shows while the image loads or if it's missing.
+   Figures are plots, so they're never cropped: the width is capped and the
+   height follows the source aspect ratio. */
+.pub-figure {
+  margin: 0;
+  width: 100%;
+  border-radius: 4px;
+  background: #ebebeb;
+}
+
+.pub-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Text content column */
+.pub-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+/* Paper title */
+/* Titles: plain text for papers (the PDF button is the link),
+   linked for conference entries. Both look the same. */
+.pub-title,
+.pub-title a {
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  line-height: 1.55;
+}
+
+.pub-title a:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+/* Author list — your name is bolded in the HTML */
+.pub-authors {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.pub-authors strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Venue + year */
+.pub-venue {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+/* Abstract toggle — uses native <details>/<summary>, no JS needed */
+.pub-abstract {
+  margin-top: 0.3rem;
+}
+
+.pub-abstract summary {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;         /* hide default triangle in some browsers */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Custom triangle */
+.pub-abstract summary::before {
+  content: "▸";
+  font-size: 0.65rem;
+  transition: transform 0.15s ease;
+  display: inline-block;
+}
+
+.pub-abstract[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.pub-abstract summary:hover {
+  color: var(--link);
+}
+
+.pub-abstract p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-top: 0.45rem;
+  padding-left: 0.1rem;
+  max-width: var(--measure);
+}
+
+/* PDF / Code / Project tag links */
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.pub-links a {
+  font-size: 0.75rem;
+  color: var(--link);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.1rem 0.55rem;
+  line-height: 1.8;
+}
+
+.pub-links a:hover {
+  background: var(--tag-hover-bg);
+  border-color: var(--link);
+}
+
+
+/* ============================================================
+   9. CONFERENCE PUBLICATIONS — compact list
+   ============================================================
+   No thumbnail, no abstract. Smaller type throughout, deliberately
+   quieter than the journal entries above. */
+.pub-list.compact {
+  gap: 0.85rem;
+}
+
+.pub-compact {
+  display: block;
+}
+
+.pub-compact .pub-title,
+.pub-compact .pub-title a {
+  font-size: 0.845rem;
+  line-height: 1.45;
+}
+
+.pub-compact .pub-authors,
+.pub-compact .pub-venue {
+  font-size: 0.765rem;
+  display: inline;
+}
+
+/* Authors and venue share a line, separated by a middot */
+.pub-compact .pub-authors::after {
+  content: " ·";
+}
+
+
+/* ============================================================
+   10. NARROW SCREENS
+   ============================================================
+   Two changes, at two different widths, so nothing jumps all at once:
+     ≤ 820px — sidebar moves above the content as a horizontal card
+     ≤ 460px — publication thumbnails move above the text
+   ============================================================ */
+@media (max-width: 820px) {
+  /* Stack sidebar above main */
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  /* Photo left, info right — compact card */
+  .sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: clamp(84px, 22vw, 116px) minmax(0, 1fr);
+    column-gap: clamp(0.9rem, 3vw, 1.25rem);
+    align-items: start;
+  }
+
+  .photo-wrap {
+    margin-bottom: 0;
+  }
+
+  .sidebar-info {
+    padding-top: 0.2rem;
+  }
+
+  /* Contact links go horizontal — there's room beside the photo now */
+  .contact {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.9rem;
+  }
+}
+
+@media (max-width: 460px) {
+  /* Thumbnail above the text, capped so it never balloons to full width */
+  .pub {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+
+  .pub-figure {
+    width: min(100%, 200px);
+  }
+
+  /* Authors and venue get their own lines — sharing one wraps mid-venue */
+  .pub-compact .pub-authors,
+  .pub-compact .pub-venue {
+    display: block;
+  }
+
+  .pub-compact .pub-authors::after {
+    content: none;
+  }
+}
+
+
+/* ============================================================
+   11. FORMAL / CASUAL TOGGLE
+   ============================================================
+   <html data-mode="..."> says which version is showing. Elements
+   tagged data-mode="formal" or data-mode="casual" are hidden in
+   the other version; untagged elements show in both. */
+html[data-mode="formal"] [data-mode="casual"],
+html[data-mode="casual"] [data-mode="formal"] {
+  display: none !important;
+}
+
+/* The toggle sits at the right end of the About heading line.
+   The heading's right padding keeps long heading text from running under it. */
+#about {
+  position: relative;
+}
+
+#about h2 {
+  padding-right: 10rem;
+}
+
+/* One button: outlined when off, highlighted when the casual version is on */
+.mode-toggle {
+  position: absolute;
+  top: -0.3rem;
+  right: 0;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.15rem 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.mode-toggle:hover {
+  color: var(--link);
+  border-color: var(--link);
+}
+
+html[data-mode="casual"] .mode-toggle {
+  color: var(--link);
+  background: var(--tag-hover-bg);
+  border-color: var(--link);
+}
+
+.mode-toggle:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+/* Casual-only intro paragraphs at the top of a section */
+.section-intro {
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.section-intro p {
+  font-size: 0.925rem;
+  line-height: 1.8;
+  max-width: var(--measure);
+}
+
+.section-intro p + p {
+  margin-top: 0.9rem;
+}
+
+/* Content fades back in after a toggle */
+html.mode-changed main,
+html.mode-changed .sidebar-info {
+  animation: mode-fade-in 0.25s ease-out;
+}
+
+@keyframes mode-fade-in {
+  from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mode-toggle {
+    transition: none;
+  }
+
+  html.mode-changed main,
+  html.mode-changed .sidebar-info {
+    animation: none;
+  }
+}

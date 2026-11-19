@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="formal">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Josh Wilson — Psychology PhD student at Stanford studying visual neuroscience.">
+  <title>Josh Wilson</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    /* Picks formal or casual before the page is drawn, so the wrong version
+       never flashes up. ?mode=casual in the URL wins, then the visitor's
+       last choice, then formal. */
+    (function () {
+      var mode = new URLSearchParams(location.search).get('mode');
+      if (mode !== 'formal' && mode !== 'casual') {
+        try { mode = localStorage.getItem('site-mode'); } catch (e) {}
+      }
+      if (mode === 'casual') document.documentElement.dataset.mode = 'casual';
+    })();
+  </script>
+</head>
+<body>
+
+  <!--
+    HOW THE FORMAL / CASUAL VERSIONS WORK:
+    Anything without a data-mode attribute shows in both versions.
+    Add data-mode="formal" or data-mode="casual" to any element to show it
+    in only that version. For a few words, put both side by side:
+      <span data-mode="formal">formal wording</span><span data-mode="casual">casual wording</span>
+    For whole paragraphs, wrap each version in its own <div data-mode="...">.
+  -->
+
+  <div class="layout">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <aside class="sidebar" aria-label="Profile and contact">
+
+      <div class="photo-wrap">
+        <img src="images/profile.jpg" alt="Josh Wilson">
+      </div>
+
+      <div class="sidebar-info">
+        <h1>Josh Wilson</h1>
+        <p class="affiliation">PhD Student, Psychology<br>Stanford</p>
+
+        <nav class="contact" aria-label="Contact">
+          <a href="mailto:joshmw@stanford.edu">joshmw@stanford.edu</a>
+          <a href="https://x.com/Norcal_Neuro" aria-label="Twitter">Twitter</a>
+          <a href="https://bsky.app/profile/norcalneuro.bsky.social" aria-label="Bluesky">Bluesky</a>
+          <a href="https://scholar.google.com/citations?user=fJOPZ-cAAAAJ&hl=en" aria-label="Scholar">Scholar</a>
+        </nav>
+      </div>
+
+    </aside>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main>
+
+      <!-- ---- ABOUT ---- -->
+      <section id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading"><span data-mode="formal">About</span><span data-mode="casual">About</span></h2>
+
+        <!-- FORMAL / CASUAL TOGGLE — sits on the same line as the About heading -->
+        <button type="button" class="mode-toggle" aria-pressed="false">The casual version</button>
+
+        <!-- FORMAL VERSION -->
+        <div data-mode="formal">
+        <p>
+          I'm a psych PhD student at Stanford. Broadly, I study how the brain
+          encodes the visual world around us into representations that we can use to make perceptual decisions.
+          My work mostly comprises computational modeling, usually on a mix of psychophysical data, human fMRI, and macaque electrophysiological recordings.
+        </p>
+
+        <p>
+          I'm primarily advised by
+          <a href="https://gru.stanford.edu">Justin Gardner</a>,
+          and I also work with
+          <a href="http://neuroailab.stanford.edu">Dan Yamins</a>. Both labs are housed in the 
+          <a href="http://neuroscience.stanford.edu">Wu Tsai Neurosciences Institute</a> at Stanford. I am currently supported by a seed grant from 
+          <a href="https://hai.stanford.edu">Stanford HAI</a>.
+          
+          Before graduate school, I did my undergraduate at Berkeley in molecular &amp; cell biology and cognitive science.
+        </p>
+
+        <p>
+          I'll graduate in 2027 and will be looking for postdoc positions widely across neuro/psych/CS. You can find some highlights of stuff I've worked on below.
+        </p>
+        </div>
+
+        <!-- CASUAL VERSION — write your casual bio here -->
+        <div data-mode="casual">
+        <p>
+          Hi! Welcome to the editorialized version. I made the paper abstracts more casual, too, so you should read those.
+
+        </p>
+
+        <p>
+          I'm finishing my PhD at Stanford with
+          <a href="https://gru.stanford.edu">Justin</a>, and 
+          <a href="http://neuroailab.stanford.edu">Dan</a>. It's through the Psych department but I'd call myself something along the lines of a "computational cognitive neuroscientist". I like the Psych department because I'm mostly interested in humans, and behavior.
+            
+        </p>
+
+        <p>
+          I got into research kind of late. I did my undergrad at Berkeley in
+          <a href="https://mcb.berkeley.edu">MCB</a>  and
+          <a href="https://cogsci.berkeley.edu/home">CogSci</a>
+          but to be fully honest I didn't really do any real research in undergrad. Thought I wanted to go to medical school and was optimizing for that. Oops. Even my first few years of graduate school I wasn't super sure what I was doing. I only really got super interested in modeling and neuroAI and the rest of the stuff that I'd say I "do" now in ~2024 (after the line-scan fMRI stuff, which was my first publication).
+
+        </p>
+        <p>
+          More of what I do below.
+        </p>
+        </div>
+      </section>
+
+      <!-- ---- PAPERS (in progress, then published/preprinted) ---- -->
+      <section id="papers" aria-labelledby="papers-heading">
+        <h2 id="papers-heading"><span data-mode="formal">Papers</span><span data-mode="casual">Papers</span></h2>
+
+        <!-- CASUAL INTRO — shows only in the casual version -->
+        <div class="section-intro" data-mode="casual">
+          <p>
+            
+          </p>
+        </div>
+
+        <!-- ---- IN PROGRESS ---- -->
+        <h3 class="pub-subhead" id="in-progress">In progress</h3>
+
+        <!-- FORMAL VERSION -->
+        <div data-mode="formal" class="pub-list">
+
+          <article class="pub">
+            <figure class="pub-figure">
+              <img src="images/pub4_fig1.png" alt="">
+            </figure>
+            <div class="pub-content">
+              <p class="pub-title">
+                BOLD fMRI supports fine-grained model identification
+              </p>
+              <p class="pub-authors">
+                Khaled Jedoui, <strong>Josh Wilson</strong>, Daniel L.K. Yamins
+              </p>
+              <p class="pub-venue">
+                <em>In preparation</em> &middot; 2026
+              </p>
+              <details class="pub-abstract">
+                <summary>Abstract</summary>
+                <p>Blood-oxygen-level-dependent functional magnetic resonance imaging (BOLD fMRI) measurements are coarsely reflective of neural computations. The measured BOLD response is a hemodynamic proxy for neural activity which averages that activity substantially across space and time. For that reason, fMRI is generally thought to reflect only coarse-scale computations shared by many neurons within a voxel, and to be less effective at identifying underlying computational motifs than finer-grained measurements such as electrode-based neurophysiological recordings. Here, however, we show that, via an encoding model approach, BOLD fMRI affords fine-grained computational model identification as well as invasive electrophysiological recordings do. We employed an extensive collection of deep neural network models to predict visual cortical responses to naturalistic images, measured with either BOLD fMRI or electrophysiological techniques. The modalities differentiated between models in highly similar ways; moreover, BOLD sensitivity did not plateau relative to that of electrophysiology, suggesting that fine-grained details captured by the most predictive models remain available in BOLD responses. An analysis of the predictions showed that the two modalities differentiated between models largely through the same internal model features, consistent with their doing so via the same computations. BOLD measurements in early visual cortex also differentiated between models by their sensitivity to characteristic fine-grained V1 response properties, even though one of those properties, fine-scale orientation, was barely decodable above chance from the BOLD responses. We demonstrate that this fine-grained model identification from coarse measurements—a form of computational superresolution—may derive from a general mathematical principle: evidence of a computation accumulates across stimuli such that, with sufficiently large datasets, measurements differentiate between candidate models at a finer grain than they resolve. Ultimately, our results suggest a scalable, noninvasive route to identifying fine-grained neural computations.</p>
+              </details>
+            </div>
+          </article>
+
+          <article class="pub">
+            <figure class="pub-figure">
+              <img src="images/pub2.jpg" alt="">
+            </figure>
+            <div class="pub-content">
+              <p class="pub-title">
+                Perceptual distances, not categories, encoded along the ventral visual stream
+              </p>
+              <p class="pub-authors">
+                <strong>Josh Wilson</strong>, Akshay Jagadeesh, Marge Livingstone, Justin L. Gardner
+              </p>
+              <p class="pub-venue">
+                <em>Under review</em> &middot; 2026
+              </p>
+              <details class="pub-abstract">
+                <summary>Abstract</summary>
+                <p>Representational geometry in ventral visual cortex is widely thought to be categorical: clustering responses to same-category objects while separating objects of different categories. However, because categories are defined by diagnostic visual features, representations organized by features rather than by category could produce similar cortical geometry. To dissociate these accounts, we synthesized images using diffusion models that interpolate smoothly in their visual features between natural objects, then measured the perceptual geometry of these stimuli under different behavioral tasks to generate competing predictions for cortical geometry. Human observers reported sharp category boundaries when categorizing the stimuli, but graded perceptual distances when judging similarity. Representational geometry measured with fMRI across human ventral visual cortex matched perceptual distance rather than categorical geometry, though categorical influence on representations increased modestly along the visual hierarchy. Both perceptual geometries could be constructed from the same cortical population response through different readout rules: a linear readout predicted perceptual distance judgments, while an additional simple nonlinearity was sufficient for categorical decisions. Electrophysiological recordings from macaque inferotemporal cortex confirmed that graded geometry persists at the resolution of multi-unit recordings, and visual neural network models exhibited similar representational organization. These results indicate that ventral visual cortex is organized by a graded feature space that preserves perceptual distances, and that categorical structure emerges through flexible readout.</p>
+              </details>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- CASUAL VERSION — edit these entries freely -->
+        <div data-mode="casual" class="pub-list">
+
+          <article class="pub">
+            <figure class="pub-figure">
+              <img src="images/pub4_fig1.png" alt="">
+            </figure>
+            <div class="pub-content">
+              <p class="pub-title">
+                BOLD fMRI supports fine-grained model identification
+              </p>
+              <p class="pub-authors">
+                Khaled Jedoui, <strong>Josh Wilson</strong>, Daniel L.K. Yamins
+              </p>
+              <p class="pub-venue">
+                <em>In preparation</em> &middot; 2026
+              </p>
+              <details class="pub-abstract">
+                <summary>Abstract</summary>
+                <p>I think a lot of people would assume that monkey electrophysiological data are probably better for constraining computational models. Like, if you had a REALLY good model, that captured all sorts of fine-grained response properties, do you think that fMRI would be able to differentiate that model from another model that's also pretty good, but doesn't have all that super fine-grained stuff? You probably wouldn't, because fMRI... kinda sucks? Like it's a crazy spatio-temporal average and it's not even measuring actual neurons. It's blood. Ephys, though? That's real neuro stuff. Individual units. Real spikes. Super fine-grained. Here's the paper though: we show, somewhat unintuitively, that BOLD fMRI actually does really well at differentiating models. The whole thing comes down to a type of encoding model approach that baiscally lets you do fine-grained systems identification when you have a lot of measurements, even if the signal in each one is very small.</p>
+              </details>
+            </div>
+          </article>
+
+          <article class="pub">
+            <figure class="pub-figure">
+              <img src="images/pub2.jpg" alt="">
+            </figure>
+            <div class="pub-content">
+              <p class="pub-title">
+                Perceptual distances, not categories, encoded along the ventral visual stream
+              </p>
+              <p class="pub-authors">
+                <strong>Josh Wilson</strong>, Akshay Jagadeesh, Marge Livingstone, Justin L. Gardner
+              </p>
+              <p class="pub-venue">
+                <em>Under review</em> &middot; 2026
+              </p>
+              <details class="pub-abstract">
+                <summary>Abstract</summary>
+                <p>TLDR, late ventral temporal cortex doesn't encode objects, it encodes a bunch of high-level features from which you can read out object identity. But that readout is totally crucial. A lot of people think that this part of the brain "Does classification". It doesn't! It supports it. We made some funky stimuli and had people categorize them and also make judgements about how similar they were. Brain measurements looked like the latter, NOT the former. But we could get the former with a little nonlinearity (this is the readout stage). We did it in monkeys, too.</p>
+              </details>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- ---- PUBLISHED / PREPRINTED ---- -->
+        <h3 class="pub-subhead" id="published">Published/preprinted</h3>
+
+        <!-- FORMAL VERSION -->
+        <div data-mode="formal" class="pub-list">
+
+          <!--
+            HOW TO ADD A PUBLICATION:
+            Copy one <article class="pub"> block and fill in:
+              - pub-title: plain text, no link (the PDF button is the link)
+              - pub-authors: bold your name with <strong>Josh Wilson</strong>
+              - pub-venue: journal or conference name, year
+              - pub-links: include whichever of PDF / Code / Project apply; delete the rest
+          -->
+
+          <!-- PLACEHOLDER PUBLICATION 1 -->
+          <article class="pub">
+            <figure class="pub-figure">
+              <img src="images/pub1.jpg" alt="">
+            </figure>
+            <div class="pub-content">
+              <p class="pub-title">
+                A hierarchical computational motif unifies neural dynamics across the ventral visual stream
+              </p>
+              <p class="pub-authors">
+                <strong>Josh Wilson</strong>, Khaled Jedoui, Paolo Papale, Marge Livingstone, Justin Gardner, Daniel L.K. Yamins
+              </p>
+              <p class="pub-venue">
+                <em>Under review / bioRxiv</em> &middot; 2026
+              </p>
+              <details class="pub-abstract">
+                <summary>Abstract</summary>
+                <p>Neural representations within individual visual cortical areas are dynamic; they evolve over tens to hundreds of milliseconds, even in response to static images. These dynamics have typically been described as area-specific phenomena with unique computational signatures. Here, we show that representational dynamics across the ventral visual stream follow a common motif: representations within each area shift over time along the same complexity axis that organizes hierarchical visual areas. The spatiotemporal signatures of this shift indicate that it is broadly distributed across the population, rather than concentrated in specific subpopulations. These shifts are functionally consequential, allowing for the recognition of more complex images over the course of the response. Further, we show evidence in all visual areas of a 30 ms within-area predictivity signal whose properties are consistent with local recurrence, which may be driving the representational shifts. Yet, we show that current state-of-the-art dynamic models, including one with built-in local recurrent processing, fail to recapitulate the measured neural dynamics. Together, these results reveal a common temporal motif across the ventral hierarchy, suggest local recurrence as a possible driver, and provide a concrete dynamic target for future models of the ventral visual stream.</p>
+              </details>
+              <p class="pub-links">
+                <a href="https://www.biorxiv.org/content/10.64898/2026.05.18.726101v1">PDF</a>
+              </p>
+            </div>
+          </article>
+
+
+
+          <!-- PLACEHOLDER PUBLICATION 3 -->
+          <article class="pub">
+            <figure class="pub-figure">
+              <img src="images/pub3.jpg" alt="">
+            </figure>
+            <div class="pub-content">
+              <p class="pub-title">
+                Limitations of 2-dimensional line-scan MRI for directly measuring neural activity
+              </p>
+              <p class="pub-authors">
+                <strong>Josh Wilson</strong>, Hua Wu, Adam B. Kerr, Brian A. Wandell, Justin L. Gardner
+              </p>
+              <p class="pub-venue">
+                <em>Imaging Neuroscience</em> &middot; 2024
+              </p>
+              <details class="pub-abstract">
+                <summary>Abstract</summary>
+                <p>A 2D-line-scan MRI sequence has been reported to directly measure neural responses to stimuli (the "DIANA response"). Attempts to replicate the DIANA response have failed, even with higher field strength and more repetitions. Part of this discrepancy is likely due to a limited understanding of how physiological noise manifests in 2D-line-scan acquisition sequences. Specifically, it is unclear what the consequences are of breaking the assumption that the imaging substrate remains constant between each line acquisition. To answer this question, we collected 2D-line-scan data at 3T from human subjects viewing a blank screen. We found temporal fluctuations in the reconstructed time series that could easily be confused with neural responses to stimuli. These fluctuations were present both in the head and in the surrounding empty volume along the span of the phase-encoding direction from the head. The timing of these fluctuations varied systematically and smoothly along the phase-encoding direction. These artifacts are similar to well-known phase-encoding artifacts in EPI and GRE images, but are exacerbated due to longer acquisition times in the 2D-line-scan sequence (seconds vs. milliseconds). We explain these artifacts with a model that accounts for the acquisition sequence and incorporates time-varying contrast fluctuations and movement in the imaging substrate. Using the model, we quantify the amount of cortical- and scan-averaging one might need to reliably distinguish a DIANA response from noise, and show that navigator echoes might help in reducing phase-encode noise in the 2D-line-scan sequence.</p>
+              </details>
+              <p class="pub-links">
+                <a href="https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00275/123966">PDF</a>
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- CASUAL VERSION — edit these entries freely -->
+        <div data-mode="casual" class="pub-list">
+
+          <!-- PLACEHOLDER PUBLICATION 1 -->
+          <article class="pub">
+            <figure class="pub-figure">
+              <img src="images/pub1.jpg" alt="">
+            </figure>
+            <div class="pub-content">
+              <p class="pub-title">
+                A hierarchical computational motif unifies neural dynamics across the ventral visual stream
+              </p>
+              <p class="pub-authors">
+                <strong>Josh Wilson</strong>, Khaled Jedoui, Paolo Papale, Marge Livingstone, Justin Gardner, Daniel L.K. Yamins
+              </p>
+              <p class="pub-venue">
+                <em> Under review / bioRxiv</em> &middot; 2026
+              </p>
+              <details class="pub-abstract">
+                <summary>Abstract</summary>
+                <p>Neural "representations" (loaded term) change over the course of the response. How? Why? You can look at individual areas and see area-specific stuff. V1 gets sharper orientation tuning. V4 goes from simple -> complex shapes. IT goes "is this a face" -> "which was is this". Turns out this is all the same thing - "complexification" of the representations along the same axis that organizes the visual hierarchy. Another way to say that is that that late V1 response looks more like the prototypical V4 response than the early V1 response (though both still look more like V1 than V4). This probably helps stuff like object recognition (we show this gets better over time). We think this is probably driven mostly by local recurrence because of the timescale, and also just the really widespread nature of the thing. This got reviewed then rejected under the guise of "novelty" (I thought the reviews were actually pretty positive?). Will probabl add some modeling stuff we've been working on and try again.</p>
+              </details>
+              <p class="pub-links">
+                <a href="https://www.biorxiv.org/content/10.64898/2026.05.18.726101v1">PDF</a>
+              </p>
+            </div>
+          </article>
+
+
+
+          <!-- PLACEHOLDER PUBLICATION 3 -->
+          <article class="pub">
+            <figure class="pub-figure">
+              <img src="images/pub3.jpg" alt="">
+            </figure>
+            <div class="pub-content">
+              <p class="pub-title">
+                Limitations of 2-dimensional line-scan MRI for directly measuring neural activity
+              </p>
+              <p class="pub-authors">
+                <strong>Josh Wilson</strong>, Hua Wu, Adam B. Kerr, Brian A. Wandell, Justin L. Gardner
+              </p>
+              <p class="pub-venue">
+                <em>Imaging Neuroscience</em> &middot; 2024
+              </p>
+              <details class="pub-abstract">
+                <summary>Abstract</summary>
+                <p>Spent a year of my life trying to replicate this big science paper in humans only for them to retract it like 3 years later. I believe there was a creative averaging problem in their analysis. Ask me about this if you're curious. Long story. Honestly, there's not much scientific value in this paper anymore, because the whole point was "don't use this method", and then people stopped using the method. Good, I guess? I did learn a ton from doing this project about measurements, simulations, MR physics, etc. Worth it overall. Good project for me to do in my second year of graduate school.</p>
+              </details>
+              <p class="pub-links">
+                <a href="https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00275/123966">PDF</a>
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ---- CONFERENCE PUBLICATIONS (ARCHIVAL) ---- -->
+      <section id="conference" aria-labelledby="conf-heading">
+        <h2 id="conf-heading"><span data-mode="formal">Conference Publications (Archival)</span><span data-mode="casual">Conference Publications (Archival)</span></h2>
+
+        <!-- CASUAL INTRO — shows only in the casual version -->
+        <div class="section-intro" data-mode="casual">
+          <p>
+
+          </p>
+        </div>
+
+        <!-- FORMAL VERSION -->
+        <div data-mode="formal" class="pub-list compact">
+
+          <article class="pub pub-compact">
+            <p class="pub-title">
+              <a href="https://openreview.net/forum?id=bNJ9eTCiO9">
+                Deep neural network models capture ventral stream predictivity at cross-animal consistency
+              </a>
+            </p>
+            <p class="pub-authors">
+              <strong>Josh Wilson</strong>, Khaled Jedoui, Daniel L.K. Yamins
+            </p>
+            <p class="pub-venue">
+              <em>Cognitive Computational Neuroscience (CCN)</em> &middot; 2026
+            </p>
+          </article>
+
+          <article class="pub pub-compact">
+            <p class="pub-title">
+              <a href="https://openreview.net/forum?id=Ca52tIIzVM">
+                Performance matters more than you think: a saturation-effect resolution to the predictivity debate
+              </a>
+            </p>
+            <p class="pub-authors">
+              Khaled Jedoui, <strong>Josh Wilson</strong>, Daniel L.K. Yamins
+            </p>
+            <p class="pub-venue">
+              <em>Cognitive Computational Neuroscience (CCN)</em> &middot; 2026 &middot; Spotlight
+            </p>
+          </article>
+
+          <article class="pub pub-compact">
+            <p class="pub-title">
+              <a href="https://openreview.net/forum?id=IMuxLE1zrb">
+                fMRI and electrophysiological recordings are equally sensitive for differentiating deep neural network models of the brain
+              </a>
+            </p>
+            <p class="pub-authors">
+              Khaled Jedoui, <strong>Josh Wilson</strong>, Daniel L.K. Yamins
+            </p>
+            <p class="pub-venue">
+              <em>Cognitive Computational Neuroscience (CCN)</em> &middot; 2026
+            </p>
+          </article>
+
+          <article class="pub pub-compact">
+            <p class="pub-title">
+              <a href="https://cds.ismrm.org/protected/24MPresentations/abstracts/3419.html">
+                Limitations of line-scan MRI for directly measuring neural activity
+              </a>
+            </p>
+            <p class="pub-authors">
+              <strong>Josh Wilson</strong>, Hua Wu, Adam B. Kerr, Brian A. Wandell, Justin L. Gardner
+            </p>
+            <p class="pub-venue">
+              <em>International Society for Magnetic Resonance in Medicine (ISMRM)</em> &middot; 2024
+            </p>
+          </article>
+
+          <article class="pub pub-compact">
+            <p class="pub-title">
+              <a href="https://jov.arvojournals.org/article.aspx?articleid=2792478">
+                Covariance between similarly tuned populations in human visual cortex is model-dependent
+              </a>
+            </p>
+            <p class="pub-authors">
+              <strong>Josh Wilson</strong>, Justin L. Gardner
+            </p>
+            <p class="pub-venue">
+              <em>Vision Sciences Society (VSS)</em> &middot; 2023
+            </p>
+          </article>
+
+        </div>
+
+        <!-- CASUAL VERSION — edit these entries freely -->
+        <div data-mode="casual" class="pub-list compact">
+
+          <article class="pub pub-compact">
+            <p class="pub-title">
+              <a href="https://openreview.net/forum?id=bNJ9eTCiO9">
+                Deep neural network models capture ventral stream predictivity at cross-animal consistency
+              </a>
+            </p>
+            <p class="pub-authors">
+              <strong>Josh Wilson</strong>, Khaled Jedoui, Daniel L.K. Yamins
+            </p>
+            <p class="pub-venue">
+              <em>Cognitive Computational Neuroscience (CCN)</em> &middot; 2026
+            </p>
+          </article>
+
+          <article class="pub pub-compact">
+            <p class="pub-title">
+              <a href="https://openreview.net/forum?id=Ca52tIIzVM">
+                Performance matters more than you think: a saturation-effect resolution to the predictivity debate
+              </a>
+            </p>
+            <p class="pub-authors">
+              Khaled Jedoui, <strong>Josh Wilson</strong>, Daniel L.K. Yamins
+            </p>
+            <p class="pub-venue">
+              <em>Cognitive Computational Neuroscience (CCN)</em> &middot; 2026 &middot; Spotlight
+            </p>
+          </article>
+
+          <article class="pub pub-compact">
+            <p class="pub-title">
+              <a href="https://openreview.net/forum?id=IMuxLE1zrb">
+                fMRI and electrophysiological recordings are equally sensitive for differentiating deep neural network models of the brain
+              </a>
+            </p>
+            <p class="pub-authors">
+              Khaled Jedoui, <strong>Josh Wilson</strong>, Daniel L.K. Yamins
+            </p>
+            <p class="pub-venue">
+              <em>Cognitive Computational Neuroscience (CCN)</em> &middot; 2026
+            </p>
+          </article>
+
+          <article class="pub pub-compact">
+            <p class="pub-title">
+              <a href="https://cds.ismrm.org/protected/24MPresentations/abstracts/3419.html">
+                Limitations of line-scan MRI for directly measuring neural activity
+              </a>
+            </p>
+            <p class="pub-authors">
+              <strong>Josh Wilson</strong>, Hua Wu, Adam B. Kerr, Brian A. Wandell, Justin L. Gardner
+            </p>
+            <p class="pub-venue">
+              <em>International Society for Magnetic Resonance in Medicine (ISMRM)</em> &middot; 2024
+            </p>
+          </article>
+
+          <article class="pub pub-compact">
+            <p class="pub-title">
+              <a href="https://jov.arvojournals.org/article.aspx?articleid=2792478">
+                Covariance between similarly tuned populations in human visual cortex is model-dependent
+              </a>
+            </p>
+            <p class="pub-authors">
+              <strong>Josh Wilson</strong>, Justin L. Gardner
+            </p>
+            <p class="pub-venue">
+              <em>Vision Sciences Society (VSS)</em> &middot; 2023
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    /* Formal / casual toggle: flips the version, remembers the choice,
+       and fades the content back in. */
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.querySelector('.mode-toggle');
+
+      function sync() {
+        toggle.setAttribute('aria-pressed', root.dataset.mode === 'casual');
+      }
+
+      toggle.addEventListener('click', function () {
+        var next = root.dataset.mode === 'casual' ? 'formal' : 'casual';
+        root.dataset.mode = next;
+        try { localStorage.setItem('site-mode', next); } catch (e) {}
+        sync();
+        root.classList.remove('mode-changed');
+        void root.offsetWidth;   // restart the fade
+        root.classList.add('mode-changed');
+      });
+
+      sync();
+    })();
+  </script>
+
+</body>
+</html>
